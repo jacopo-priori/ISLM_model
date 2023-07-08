@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISLM</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+    <div id="container" style="width: 600px; height: 400px;"></div>
+
+    <label for="M">M:</label>
+    <input type="number" id="M">
+
+    <label for="P">P:</label>
+    <input type="number" id="P">
+
+    <button onclick="updateChart()">Update</button>
+
+    <script>
+        var chart = Highcharts.chart('container', {
+            title: {
+                text: 'Money Market'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Money Balances'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Real Interest Rate'
+                }
+            },
+            series: [{
+                name: 'Money Supply',
+                data: []
+            }]
+        });
+
+        function money_supply(M, P) {
+            var data = [];
+
+            for (var i = 1; i <= 100; i++) {
+                data.push([i, M / P]);
+            }
+
+            return data;
+        }
+
+        function updateChart() {
+            var M = parseFloat(document.getElementById("M").value);
+            var P = parseFloat(document.getElementById("P").value);
+            var data = money_supply(M, P);
+            chart.series[0].setData(data);
+        }
+    </script>
+</body>
+</html>
+In this version, I added a series object within the chart configuration to define the data series. The money_supply function now creates an array of [x, y] pairs for the data points, where x represents the iteration index and y represents the calculated value. The setData method is then used to update the series data with the new values.
+
+Now, when you enter values for M and P and click the "Update" button, the chart should display the Money Supply curve based on the provided parameters.
+
+
+
+
+
+

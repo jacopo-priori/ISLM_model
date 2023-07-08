@@ -1,13 +1,100 @@
-﻿<!DOCTYPE html>
+﻿<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ISLM </title>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+    </head>
+    <body>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+        <div id="container"></div>
 
-</body>
-</html>
- 
+        <label for="aC">aC:</label>
+        <input type="number" id="aC">
+
+        <label for="T">T:</label>
+        <input type="number" id="T">
+
+        <label for="I">I:</label>
+        <input type="number" id="I">
+        <br>
+        <label for="aI">aI:</label>
+        <input type="number" id="aI">
+
+        <label for="M">M:</label>
+        <input type="number" id="M">
+        <br>
+
+        <label for="G">G:</label>
+        <input type="number" id="G">
+
+        <label for="P">P:</label>
+        <input type="number" id="P">
+
+        <label for="Y">Y:</label>
+        <input type="number" id="Y">
+        <br>
+        <label for="aD">aD:</label>
+        <input type="number" id="aD">
+
+        <label for="mpc">mpc:</label>
+        <input type="number" id="mpc">
+
+        <label for="sLY">sLY:</label>
+        <input type="number" id="sLY">
+
+        <label for="sLr">sLr:</label>
+        <input type="number" id="sLr">
+
+        <button onclick="Update()">Update </button>
+
+        <div id="container" style="width: 600px; height: 400px;"></div>
+
+        <script>
+            var initial_aC = 100;
+            var initial_T = 200;
+            var initial_I = 200;
+            var initial_aI = 100;
+            var initial_M = 500;
+            var initial_G = 200;
+            var initial_P = 2;
+            var initial_Y = 2000;
+            var initial_aD = 100;
+            var initial_mpc = 0.5;
+            var initial_sLY = 1;
+            var initial_sLr = 100;
+
+            var chart = Highcharts.chart('container', {
+                title: {
+                    text: 'Money Market'
+                },
+                xAxis: {
+                    title: {
+                        text: 'Real Money Balances'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Real Interest Rate'
+                    }
+                }
+
+
+            function money_supply(M, P) {
+                var data = [];
+
+                for (var i = 1; i <= 100; i++) {
+                    data.push(M/P);
+                }
+
+                return data;
+            }
+
+            function updateChart() {
+                var x = parseFloat(document.getElementById("x").value);
+                var data = money_supply(M, P);
+                chart.series[0].setData(data);
+
+</body >
+</html >
 
