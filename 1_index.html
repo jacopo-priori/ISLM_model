@@ -8,7 +8,7 @@
     <script src="https://nerdamer.com/js/nerdamer.core.js"></script>
 </head>
 <body>
-    <div id="container" style="width: 600px; height: 400px;"></div>
+    <div id="container1" style="width: 600px; height: 400px;"></div>
 
     <label for="aC">aC:</label>
     <input type="number" id="aC">
@@ -24,20 +24,19 @@
 
     <label for="M">M:</label>
     <input type="number" id="M">
-    <br>
 
     <label for="G">G:</label>
     <input type="number" id="G">
-
+    <br>
     <label for="P">P:</label>
     <input type="number" id="P">
 
     <label for="Y">Y:</label>
     <input type="number" id="Y">
-    <br>
+
     <label for="aD">aD:</label>
     <input type="number" id="aD">
-
+    <br>
     <label for="mpc">mpc:</label>
     <input type="number" id="mpc">
 
@@ -49,9 +48,21 @@
 
     <button onclick="updateChart()">Update</button>
 
+    <div id="container2" style="width: 600px; height: 400px;"></div>
+    
+    <div id="solutions"></div>
+
+
     <script>
+    const f = nerdamer.solveEquations('x^2 - 4', 'x');
+    const solutionsDiv = document.getElementById('solutions');
+
+    const solutionsText = "The solutions are: " + f.toString();
+    solutionsDiv.textContent = solutionsText;
+
+
         var initial_aC = 100;
-        var initial_T = 200;
+        var initial_T = 700;
         var initial_I = 200;
         var initial_aI = 100;
         var initial_M = 1000;
@@ -63,8 +74,7 @@
         var initial_sLY = 7;
         var initial_sLr = 10;
 
-
-        var chart = Highcharts.chart('container', {
+        var chart1 = Highcharts.chart('container1', {
             title: {
                 text: 'Money Market'
             },
@@ -83,6 +93,29 @@
                 data: []
             }, {
                 name: 'Money Demand',
+                data: []
+            }]
+        });
+
+        var chart2 = Highcharts.chart('container2', {
+            title: {
+                text: 'Keynesian Cross'
+            },
+            xAxis: {
+                title: {
+                    text: 'Income'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Planned Expenditure'
+                }
+            },
+            series: [{
+                name: 'Planned Expenditure',
+                data: []
+            }, {
+                name: 'Actual Expenditure',
                 data: []
             }]
         });
@@ -111,18 +144,48 @@
             return data_md;
         }
 
-        function updateChart() {
-            var M = initial_M;
-            var P = initial_P;
-            var Y = parseFloat(document.getElementById("Y").value);
-            var sLY = parseFloat(document.getElementById("sLY").value);
-            var sLr = parseFloat(document.getElementById("sLr").value);
-            var aD = parseFloat(document.getElementById("aD").value);
-            var data_ms = money_supply(M, P);
-            var data_md = money_demand(Y, sLr, sLY, aD);
-            chart.series[0].setData(data_ms);
-            chart.series[1].setData(data_md);
+        function planned_expenditure(mpc, T, aC, I, aI, G) {
+            var data_pe = [];
+
+            for (var i = 0; i <= 1000; i += 0.1) {
+                data_pe.push([i, mpc * (i - T) + aC + I + aI + G]);
+            }
+
+            return data_pe;
         }
+
+        function actual_expenditure(Y) {
+            var data_ae = [];
+            for (var i = 0; i <= 1000; i += 0.1) {
+                data_ae.push([i, i]);
+            }
+
+            return data_ae;
+        }
+
+        function updateChart() {
+    var M = initial_M;
+    var P = initial_P;
+    var Y = parseFloat(document.getElementById("Y").value);
+    var sLY = parseFloat(document.getElementById("sLY").value);
+    var sLr = parseFloat(document.getElementById("sLr").value);
+    var aD = parseFloat(document.getElementById("aD").value);
+    var mpc = parseFloat(document.getElementById("mpc").value);
+    var T = parseFloat(document.getElementById("T").value);
+    var aC = parseFloat(document.getElementById("aC").value);
+    var I = parseFloat(document.getElementById("I").value);
+    var aI = parseFloat(document.getElementById("aI").value);
+    var G = parseFloat(document.getElementById("G").value);
+    var data_ms = money_supply(M, P);
+    var data_md = money_demand(Y, sLr, sLY, aD);
+    var data_pe = planned_expenditure(mpc, T, aC, I, aI, G);
+    var data_ae = actual_expenditure(Y);
+
+    chart1.series[0].setData(data_ms);
+    chart1.series[1].setData(data_md);
+    chart2.series[0].setData(data_pe);
+    chart2.series[1].setData(data_ae);
+}
 
         // Set initial values on page load
         document.getElementById("M").value = initial_M;
@@ -131,14 +194,15 @@
         document.getElementById("sLY").value = initial_sLY;
         document.getElementById("sLr").value = initial_sLr;
         document.getElementById("aD").value = initial_aD;
+        document.getElementById("mpc").value = initial_mpc;
+        document.getElementById("T").value = initial_T;
+        document.getElementById("aC").value = initial_aC;
+        document.getElementById("I").value = initial_I;
+        document.getElementById("aI").value = initial_aI;
+        document.getElementById("G").value = initial_G;
 
         // Update the chart immediately after setting initial values
         updateChart();
     </script>
 </body>
 </html>
-
-
-
-
-
