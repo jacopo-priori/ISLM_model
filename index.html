@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISLM</title>
+    <title>IS-LM</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://nerdamer.com/js/nerdamer.core.js"></script>
@@ -18,61 +18,55 @@
         <div class="box top-left" id="container3"></div>
         <div class="box top-right">
 
-            <div class="center-button">
-                <br><br><button onclick="openNewPage()">Details</button> <br><br><br><br>
+
+            <div class="message1">
+                <b>INTERACTIVE IS-LM MODEL</b><br><br>
+            </div>
+
+            <div class="button">
+                <button onclick="openNewPage()">Details</button>
             </div>
 
 
-
-            <label for="M"><div class="overlined-character">M</div>:</label>
+            <br><br><br><br>
+            <label for="M"><div class="overlined-character"><b>M</b></div> (money supply)</label>
             <input type="number" id="M" class="small-input">
-            <label for="P"><div class="overlined-character">P</div>:</label>
+            <label for="P"><div class="overlined-character"><b>P</b></div> (price level)</label>
             <input type="number" id="P" class="small-input">
-            <label for="sLY">sLY:</label>
-            <input type="number" id="sLY" class="small-input">
-            <label for="Y"><div class="overlined-character">Y</div>:</label>
+            <label for="sLY"><b>sLY</b> (sensitivity of demand to Y)</label>
+            <input type="number" id="sLY" class="small-input">                                                 <br><br>
+            <label for="Y"><div class="overlined-character"><b>Y</b></div> (output)</label>
             <input type="number" id="Y" class="small-input">
-            <label for="sLr">sLr:</label>
+            <label for="sLr"><b>sLr</b> (sens. of demand to real interest rate)</label>
             <input type="number" id="sLr" class="small-input">
-            <label for="aD"><div class="overlined-character">aD</div>:</label>
-            <input type="number" id="aD" class="small-input">
-            <br>
-            <br>
-            <label for="mpc">mpc:</label>
+            <label for="aD"><div class="overlined-character"><b>aD</b></div> (autonomous demand)</label>
+            <input type="number" id="aD" class="small-input">                                                <br><br>
+            <label for="mpc"><b>mpc</b> (marginal propensity to consume)</label>
             <input type="number" id="mpc" class="small-input">
-            <label for="T"><div class="overlined-character">T</div>:</label>
+            <label for="T"><div class="overlined-character"><b>T</b></div> (taxes)</label>
             <input type="number" id="T" class="small-input">
-            <label for="aC"><div class="overlined-character">aC</div>:</label>
-            <input type="number" id="aC" class="small-input">
-            <label for="I"><div class="overlined-character">I</div>:</label>
+            <label for="aC"><div class="overlined-character"><b>aC</b></div> (aut. consumption)</label>
+            <input type="number" id="aC" class="small-input">                                                <br><br>
+            <label for="I"><div class="overlined-character"><b>I</b></div> (investment)</label>
             <input type="number" id="I" class="small-input">
-            <label for="aI"><div class="overlined-character">aI</div>:</label>
+            <label for="aI"><div class="overlined-character"><b>aI</b></div> (aut. investment)</label>
             <input type="number" id="aI" class="small-input">
-            <label for="G"><div class="overlined-character">G</div>:</label>
-            <input type="number" id="G" class="small-input">
-            <label for="sIr">sIr:</label>
+            <label for="G"><div class="overlined-character"><b>G</b></div> (government expenditure)</label>
+            <input type="number" id="G" class="small-input">                                                <br><br>
+            <label for="sIr"><b>sIr</b> (sens. of investment to real int. rate)</label>
             <input type="number" id="sIr" class="small-input">
-            <br>
-            <br>
+            <br><br>
 
 
-            <div class="center-button">
+            <div class="center-button2">
                 <button onclick="updateChart()">Update</button>
             </div>
-            
-
-
-
-
-
 
             <div class="message">
-                Money Supply  =  <div class="overlined-character">M</div> / <div class="overlined-character">P</div> <br><br>
-                Money Demand  =  sLY * <div class="overlined-character">Y</div> - sLr * r + <div class="overlined-character">aD</div> <br><br>
-                Planned Expenditure  =  mpc * (<div class="overlined-character">Y</div> - <div class="overlined-character">T</div>) + <div class="overlined-character">aC</div> + <div class="overlined-character">I</div> + <div class="overlined-character">aI</div> + <div class="overlined-character">G</div><br><br>
-                Actual expenditure  =  Y <br><br>
-                IS:  r  =  (- Y + mpc * (Y - <div class="overlined-character">T</div>) + <div class="overlined-character">aC</div> + <div class="overlined-character">aI</div> + <div class="overlined-character">G</div>) / sIr<br><br>
-                LM: r = (sLY * Y + <div class="overlined-character">aD</div> - <div class="overlined-character">M</div> / <div class="overlined-character">P</div>) / sLr<br><br>
+                <b>Real Money Supply </b>  =  <div class="overlined-character">M</div> / <div class="overlined-character">P</div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Planned Expenditure </b>  =  mpc * ( <div class="overlined-character">Y</div> - <div class="overlined-character">T</div> ) + <div class="overlined-character">aC</div> + <div class="overlined-character">I</div> + <div class="overlined-character">aI</div> + <div class="overlined-character">G</div><br><br>
+                <b>Real Money Supply </b>  =  sLY * <div class="overlined-character">Y</div> - sLr * r + <div class="overlined-character">aD</div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <b>Actual Expenditure </b> =  Y<br><br>
+                <b>IS: </b> r  =  ( - Y + mpc * ( Y - <div class="overlined-character">T</div> ) + <div class="overlined-character">aC</div> + <div class="overlined-character">aI</div> + <div class="overlined-character">G</div> ) / sIr<br><br>
+                <b>LM: </b> r = ( sLY * Y + <div class="overlined-character">aD</div> - <div class="overlined-character">M</div> / <div class="overlined-character">P</div> ) / sLr
             </div>
         </div>
         <div class="box bottom-left" id="container2"></div>
@@ -115,10 +109,10 @@
                 }
             },
             series: [{
-                name: 'Money Supply',
+                name: 'Real Money Supply',
                 data: []
             }, {
-                name: 'Money Demand',
+                name: 'Real Money Demand',
                 data: []
             }]
         });
@@ -129,7 +123,7 @@
             },
             xAxis: {
                 title: {
-                    text: 'Income'
+                    text: 'Real Output'
                 }
             },
             yAxis: {
@@ -148,11 +142,11 @@
 
         var chart3 = Highcharts.chart('container3', {
             title: {
-                text: 'ISLM'
+                text: 'IS-LM'
             },
             xAxis: {
                 title: {
-                    text: 'Income'
+                    text: 'Real Output'
                 }
             },
             yAxis: {
@@ -272,7 +266,7 @@
 
             var equation = mpc + "*(x-" + T + ")+" + aI + "+" + I + "+" + aC + "+" + G + "-x";
             var f = nerdamer.solveEquations(equation, 'x');
-            document.getElementById("solution").innerHTML = `Income = ${f.toString()}, Expenditure = ${f.toString()}`;
+            document.getElementById("solution").innerHTML = `Real Output = ${f.toString()}, Expenditure = ${f.toString()}`;
 
 
         }
