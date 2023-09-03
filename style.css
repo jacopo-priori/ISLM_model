@@ -1,6 +1,7 @@
 ﻿body {
     background-color: lightblue;
-    font-size: 15px;
+    font-size: 13px;
+    font-family: Helvetica;
 }
 
 .container {
@@ -25,6 +26,10 @@
         order: 2;
         margin-right: 20px;
     }
+        .center-button {
+            text-align: center;
+            font-size: 70px;
+        }
 
     .box.bottom-left {
         order: 3;

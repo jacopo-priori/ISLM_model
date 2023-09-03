@@ -13,9 +13,17 @@
     <script src="script.js"></script>
 </head>
 <body>
+
     <div class="container">
         <div class="box top-left" id="container3"></div>
         <div class="box top-right">
+
+            <div class="center-button">
+                <br><br><button onclick="openNewPage()">Details</button> <br><br><br><br>
+            </div>
+
+
+
             <label for="M"><div class="overlined-character">M</div>:</label>
             <input type="number" id="M" class="small-input">
             <label for="P"><div class="overlined-character">P</div>:</label>
@@ -46,7 +54,18 @@
             <input type="number" id="sIr" class="small-input">
             <br>
             <br>
-            <button onclick="updateChart()">Update</button>
+
+
+            <div class="center-button">
+                <button onclick="updateChart()">Update</button>
+            </div>
+            
+
+
+
+
+
+
             <div class="message">
                 Money Supply  =  <div class="overlined-character">M</div> / <div class="overlined-character">P</div> <br><br>
                 Money Demand  =  sLY * <div class="overlined-character">Y</div> - sLr * r + <div class="overlined-character">aD</div> <br><br>
@@ -60,6 +79,8 @@
         <div class="box bottom-right" id="container1"></div>
     </div>
     <span id="solution"></span>
+
+
 
     <script src="myscript.js"></script>
     <script>
@@ -76,6 +97,8 @@
         var initial_sLY = 1;
         var initial_sLr = 100;
         var initial_sIr = 25;
+
+        
 
         var chart1 = Highcharts.chart('container1', {
             title: {
@@ -205,6 +228,11 @@
             }
 
             return data_lm;
+        }
+
+        
+        function openNewPage() {
+            window.open("details_page.html", "_blank");
         }
 
         function updateChart() {
