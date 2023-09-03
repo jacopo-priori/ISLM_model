@@ -4,67 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISLM</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://nerdamer.com/js/nerdamer.core.js"></script>
+    <script src="https://nerdamer.com/js/Algebra.js"></script>
+    <script src="https://nerdamer.com/js/Calculus.js"></script>
+    <script src="https://nerdamer.com/js/Solve.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
-    <div id="container" style="width: 600px; height: 400px;"></div>
+    <div class="container">
+        <div class="box top-left" id="container3"></div>
+        <div class="box top-right">
+            <label for="M"><div class="overlined-character">M</div>:</label>
+            <input type="number" id="M" class="small-input">
+            <label for="P"><div class="overlined-character">P</div>:</label>
+            <input type="number" id="P" class="small-input">
+            <label for="sLY">sLY:</label>
+            <input type="number" id="sLY" class="small-input">
+            <label for="Y"><div class="overlined-character">Y</div>:</label>
+            <input type="number" id="Y" class="small-input">
+            <label for="sLr">sLr:</label>
+            <input type="number" id="sLr" class="small-input">
+            <label for="aD"><div class="overlined-character">aD</div>:</label>
+            <input type="number" id="aD" class="small-input">
+            <br>
+            <br>
+            <label for="mpc">mpc:</label>
+            <input type="number" id="mpc" class="small-input">
+            <label for="T"><div class="overlined-character">T</div>:</label>
+            <input type="number" id="T" class="small-input">
+            <label for="aC"><div class="overlined-character">aC</div>:</label>
+            <input type="number" id="aC" class="small-input">
+            <label for="I"><div class="overlined-character">I</div>:</label>
+            <input type="number" id="I" class="small-input">
+            <label for="aI"><div class="overlined-character">aI</div>:</label>
+            <input type="number" id="aI" class="small-input">
+            <label for="G"><div class="overlined-character">G</div>:</label>
+            <input type="number" id="G" class="small-input">
+            <label for="sIr">sIr:</label>
+            <input type="number" id="sIr" class="small-input">
+            <br>
+            <br>
+            <button onclick="updateChart()">Update</button>
+            <div class="message">
+                Money Supply  =  <div class="overlined-character">M</div> / <div class="overlined-character">P</div> <br><br>
+                Money Demand  =  sLY * <div class="overlined-character">Y</div> - sLr * r + <div class="overlined-character">aD</div> <br><br>
+                Planned Expenditure  =  mpc * (<div class="overlined-character">Y</div> - <div class="overlined-character">T</div>) + <div class="overlined-character">aC</div> + <div class="overlined-character">I</div> + <div class="overlined-character">aI</div> + <div class="overlined-character">G</div><br><br>
+                Actual expenditure  =  Y <br><br>
+                IS:  r  =  (- Y + mpc * (Y - <div class="overlined-character">T</div>) + <div class="overlined-character">aC</div> + <div class="overlined-character">aI</div> + <div class="overlined-character">G</div>) / sIr<br><br>
+                LM: r = (sLY * Y + <div class="overlined-character">aD</div> - <div class="overlined-character">M</div> / <div class="overlined-character">P</div>) / sLr<br><br>
+            </div>
+        </div>
+        <div class="box bottom-left" id="container2"></div>
+        <div class="box bottom-right" id="container1"></div>
+    </div>
+    <span id="solution"></span>
 
-    <label for="aC">aC:</label>
-    <input type="number" id="aC">
-
-    <label for="T">T:</label>
-    <input type="number" id="T">
-
-    <label for="I">I:</label>
-    <input type="number" id="I">
-    <br>
-    <label for="aI">aI:</label>
-    <input type="number" id="aI">
-
-    <label for="M">M:</label>
-    <input type="number" id="M">
-    <br>
-
-    <label for="G">G:</label>
-    <input type="number" id="G">
-
-    <label for="P">P:</label>
-    <input type="number" id="P">
-
-    <label for="Y">Y:</label>
-    <input type="number" id="Y">
-    <br>
-    <label for="aD">aD:</label>
-    <input type="number" id="aD">
-
-    <label for="mpc">mpc:</label>
-    <input type="number" id="mpc">
-
-    <label for="sLY">sLY:</label>
-    <input type="number" id="sLY">
-
-    <label for="sLr">sLr:</label>
-    <input type="number" id="sLr">
-
-    <button onclick="updateChart()">Update</button>
-
+    <script src="myscript.js"></script>
     <script>
-        var initial_aC = 100;
-        var initial_T = 200;
-        var initial_I = 200;
-        var initial_aI = 100;
+        var initial_aC = 200;
+        var initial_T = 100;
+        var initial_I = 100;
+        var initial_aI = 200;
         var initial_M = 1000;
-        var initial_G = 200;
-        var initial_P = 10;
-        var initial_Y = 200;
-        var initial_aD = 150;
-        var initial_mpc = 0.5;
-        var initial_sLY = 7;
-        var initial_sLr = 10;
+        var initial_G = 100;
+        var initial_P = 2;
+        var initial_Y = 1000;
+        var initial_aD = 100;
+        var initial_mpc = 0.75;
+        var initial_sLY = 1;
+        var initial_sLr = 100;
+        var initial_sIr = 25;
 
-
-        var chart = Highcharts.chart('container', {
+        var chart1 = Highcharts.chart('container1', {
             title: {
                 text: 'Money Market'
             },
@@ -87,11 +100,57 @@
             }]
         });
 
+        var chart2 = Highcharts.chart('container2', {
+            title: {
+                text: 'Keynesian Cross'
+            },
+            xAxis: {
+                title: {
+                    text: 'Income'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Planned Expenditure'
+                }
+            },
+            series: [{
+                name: 'Planned Expenditure',
+                data: []
+            }, {
+                name: 'Actual Expenditure',
+                data: []
+            }]
+        });
+
+        var chart3 = Highcharts.chart('container3', {
+            title: {
+                text: 'ISLM'
+            },
+            xAxis: {
+                title: {
+                    text: 'Income'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Real interest rate'
+                }
+            },
+            series: [{
+                name: 'IS',
+                data: []
+            }, {
+                name: 'LM',
+                data: []
+            }]
+        });
         function money_supply(M, P) {
             var data_ms = [];
 
-            for (var i = 0; i <= 1000; i += 0.1) {
-                data_ms.push([M / P, i]);
+            for (var i = 0; i <= 40; i += 1) {  // here i is real interest rate
+                const mp = M / P;
+                data_ms.push([mp, i]);
             }
 
             return data_ms;
@@ -100,45 +159,115 @@
         function money_demand(Y, sLr, sLY, aD) {
             var data_md = [];
 
-            for (var i = 0; i <= 1000; i += 0.1) {
+            for (var i = 0; i <= 40; i += 0.1) {  // here i is real interest rate
                 var md = sLY * Y - sLr * i + aD;
-                if (md < 0) {
-                    break;
-                }
-                data_md.push([i, md]);
+                data_md.push([md, i]);
             }
 
             return data_md;
         }
 
+        function planned_expenditure(mpc, T, aC, I, aI, G) {
+            var data_pe = [];
+
+            for (var i = 0; i <= 3000; i += 1) {  // here i is output
+                data_pe.push([i, mpc * (i - T) + aC + I + aI + G]);
+            }
+
+            return data_pe;
+        }
+
+        function actual_expenditure() {
+            var data_ae = [];
+            for (var i = 0; i <= 3000; i += 1) {
+                data_ae.push([i, i]);
+            }
+
+            return data_ae;
+        }
+
+        function isis(mpc, T, aC, G, sIr, aI) {
+            var data_is = [];
+            for (var i = 0; i <= 2500; i += 1) {  // here i is output
+                var isisis = (- i + mpc * (i - T) + aC + aI + G) / sIr;
+                data_is.push([i, isisis]);
+            }
+
+            return data_is;
+        }
+
+
+        function lmlm(sLY, aD, M, P, sLr) {
+            var data_lm = [];
+            for (var i = 0; i <= 2500; i += 1) {
+                var lmlmlm = (sLY * i + aD - M / P) / sLr;
+                data_lm.push([i, lmlmlm]);
+            }
+
+            return data_lm;
+        }
+
         function updateChart() {
-            var M = initial_M;
-            var P = initial_P;
+            var M = parseFloat(document.getElementById("M").value);
+            var P = parseFloat(document.getElementById("P").value);
             var Y = parseFloat(document.getElementById("Y").value);
             var sLY = parseFloat(document.getElementById("sLY").value);
             var sLr = parseFloat(document.getElementById("sLr").value);
             var aD = parseFloat(document.getElementById("aD").value);
+            var mpc = parseFloat(document.getElementById("mpc").value);
+            var T = parseFloat(document.getElementById("T").value);
+            var aC = parseFloat(document.getElementById("aC").value);
+            var I = parseFloat(document.getElementById("I").value);
+            var aI = parseFloat(document.getElementById("aI").value);
+            var G = parseFloat(document.getElementById("G").value);
+            var sIr = parseFloat(document.getElementById("sIr").value);
             var data_ms = money_supply(M, P);
             var data_md = money_demand(Y, sLr, sLY, aD);
-            chart.series[0].setData(data_ms);
-            chart.series[1].setData(data_md);
+            var data_pe = planned_expenditure(mpc, T, aC, I, aI, G);
+            var data_ae = actual_expenditure();
+            var data_is = isis(mpc, T, aC, G, sIr, aI);
+            var data_lm = lmlm(sLY, aD, M, P, sLr);
+
+            data_ms = data_ms.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_md = data_md.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_pe = data_pe.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_ae = data_ae.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_is = data_is.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_lm = data_lm.map(point => [round(point[0], 2), round(point[1], 2)]);
+
+            chart1.series[0].setData(data_ms);
+            chart1.series[1].setData(data_md);
+            chart2.series[0].setData(data_pe);
+            chart2.series[1].setData(data_ae);
+            chart3.series[0].setData(data_is);
+            chart3.series[1].setData(data_lm);
+
+            var equation = mpc + "*(x-" + T + ")+" + aI + "+" + I + "+" + aC + "+" + G + "-x";
+            var f = nerdamer.solveEquations(equation, 'x');
+            document.getElementById("solution").innerHTML = `Income = ${f.toString()}, Expenditure = ${f.toString()}`;
+
+
         }
 
-        // Set initial values on page load
         document.getElementById("M").value = initial_M;
         document.getElementById("P").value = initial_P;
         document.getElementById("Y").value = initial_Y;
         document.getElementById("sLY").value = initial_sLY;
         document.getElementById("sLr").value = initial_sLr;
         document.getElementById("aD").value = initial_aD;
+        document.getElementById("mpc").value = initial_mpc;
+        document.getElementById("T").value = initial_T;
+        document.getElementById("aC").value = initial_aC;
+        document.getElementById("I").value = initial_I;
+        document.getElementById("aI").value = initial_aI;
+        document.getElementById("G").value = initial_G;
+        document.getElementById("sIr").value = initial_sIr;
 
-        // Update the chart immediately after setting initial values
         updateChart();
+
+        function round(number, decimals) {
+            return Number(number.toFixed(decimals));
+        }
     </script>
 </body>
 </html>
-
-
-
-
-

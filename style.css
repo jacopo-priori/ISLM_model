@@ -1,2 +1,62 @@
 ﻿body {
+    background-color: lightblue;
+    font-size: 15px;
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.box {
+    width: 650px;
+    height: 500px;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+    .box.top-left {
+        order: 1;
+        margin-right: 20px;
+    }
+
+    .box.top-right {
+        order: 2;
+        margin-right: 20px;
+    }
+
+    .box.bottom-left {
+        order: 3;
+        margin-right: 20px;
+    }
+
+    .box.bottom-right {
+        order: 4;
+        margin-left: 20px;
+    }
+
+.message {
+    text-align: left;
+    margin: 0px;
+    margin-top: 30px;
+    width: fit-content;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 16px;
+    width: 50px;
+}
+
+.small-input {
+    width: 50px;
+    margin-right: 5px;
+}
+
+.overlined-character {
+    text-decoration: overline;
+    display: inline-block;
+    position: relative;
