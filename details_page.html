@@ -1,39 +1,349 @@
-﻿<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title>Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IS-LM</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://nerdamer.com/js/nerdamer.core.js"></script>
+    <script src="https://nerdamer.com/js/Algebra.js"></script>
+    <script src="https://nerdamer.com/js/Calculus.js"></script>
+    <script src="https://nerdamer.com/js/Solve.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </head>
-<style>
-    body {
-        font-family: Helvetica;
-        background-color: lightblue;
-        font-size: 20px;
-</style>
 <body>
-    <b>Authors:</b><br> Jacopo Priori, Matteo Ferrazza <br><br>
 
-    <b>The model:</b><br>
-                     <ul>
-                         <li>This representation is of a closed economy in the short run, where prices are sticky and output is demand driven.</li>
-                         <li>Given a short run fixed price level, this macroeconomic tool shows what determines national output.</li>
-                         <li>The "liquidity preference-money supply" (LM) curve consists of all the combinations between output and interest rate in which the money market is in equilibrium.</li>
-                         <li>The "investment-saving" (IS) curve does the same, but referring to the goods and services market.</li>
-                         <li>They intersect at a point of general equilibrium, where there are simultaneous equilibria in both markets.</li>
-                         <li>The interest rate is the variable that influences both of them and that links them together.</li>
-                         <li>John Hicks initially developed this model in 1937, and it was subsequently expanded upon by Alvin Hansen.</li>
-                         <li>It serves as a mathematical representation of the Keynesian macroeconomic theory.</li>
-                         <li>From the 1940s to the mid-1970s, it held a dominant position as the primary framework for macroeconomic analysis.</li>
-                     </ul>
+    <div class="container">
+        <div class="box top-left" id="container3"></div>
 
-    
+        <div class="box top-right">
 
 
-    <b>To report bugs or errors and for feedbacks or enquiries:</b><br> <a href="https://forms.gle/JDfLoTxkEksyP6qR8">click here</a><br><br>
-    <b>Date:</b><br> July 2023 <br><br>
+            <div class="message1">
+                <b>INTERACTIVE IS-LM MODEL (closed economy in the short run)</b>         <br><br>
+            </div>
 
-    <b>Reference:</b><br> Mankiw, N. G., &amp; Taylor, M. P. (2014). Macroeconomic: Second european edition. Worth. <br><br>
+            <div class="button">
+                <button onclick="openNewPage()">Details</button>
+            </div>
 
+
+            <br>
+
+            <label for="M">       \(\overline{\mathbf{M}}\) (money supply)     </label>
+            <input type="number" id="M" class="small-input" step="50">
+            <label for="P">   \(\overline{\mathbf{P}}\) (price level)</label>
+            <input type="number" id="P" class="small-input">
+            <label for="sLY"><b>\(\mathbf{s_{LY}}\)</b> (sensitivity of demand to Y)</label>
+            <input type="number" id="sLY" class="small-input">                                                 <br><br>
+
+            <label for="sLr">\(\mathbf{s_{Lr}}\) (sens. of demand to real interest rate)</label>
+            <input type="number" id="sLr" class="small-input" step="10">
+            <label for="aD">\(\overline{\mathbf{aD}}\) (autonomous demand)</label>
+            <input type="number" id="aD" class="small-input" step="10">                                               <br><br>
+            <label for="mpc">\(\mathbf{mpc}\) (marginal propensity to consume)</label>
+            <input type="number" id="mpc" class="small-input" step="0.05">
+            <label for="T">\(\overline{\mathbf{T}}\) (taxes)</label>
+            <input type="number" id="T" class="small-input" step="10">
+            <label for="aC">\(\overline{\mathbf{aC}}\) (aut. consumption)</label>
+            <input type="number" id="aC" class="small-input" step="10">                                               <br><br>
+
+            <label for="aI">\(\overline{\mathbf{aI}}\) (aut. investment)</label>
+            <input type="number" id="aI" class="small-input" step="10">
+            <label for="G">\(\overline{\mathbf{G}}\) (government expenditure)</label>
+            <input type="number" id="G" class="small-input" step="10">                                               <br><br>
+            <label for="sIr">\(\mathbf{s_{Ir}}\) (sens. of investment to real int. rate)</label>
+            <input type="number" id="sIr" class="small-input" step="5">
+            <br><br>
+
+
+            <div class="center-button2">
+                <button onclick="updateChart()">Update</button>
+            </div>
+
+            <div class="message">
+                <b>Actual Expenditure </b>   \(= Y\) <br><br>
+                <b>Planned Expenditure </b> \(\,= \,mpc \, \cdot \, (\,Y\, -\, \overline{T}\,) \,+\, \overline{aC}\, -\,s_{Ir}\,*\,r \,+ \,\overline{aI}\, +\, \overline{G}\) <br><br>
+                <b>Real Money Supply </b>   \(= \frac{{\overline{M}}}{{\overline{P}}}\)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Real Money Demand </b>  \(\,= \,s_{LY}\, \cdot\, Y\, - \,s_{Lr} \,\cdot\, r\, +\, \overline{aD}\) <br><br>
+                <b>IS:&nbsp; </b> \(\,r\, =\, \frac{{-Y \,+\, \text{mpc}\, \cdot\, (\,Y\, - \,\overline{T}\,)\, +\, \overline{aC}\, + \,\overline{aI}\, + \,\overline{G}}}{{s_{Ir}}}\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>LM:&nbsp; </b>\(\, r \,= \,\frac{{s_{LY}\, \cdot \,Y\, +\, \overline{aD}\, -\, \frac{\overline{M}\,}{\overline{P}}}}{{s_{Lr}}} \)
+            </div>
+            <br><br>
+            <div id="intersectionKC"></div>
+            <div id="intersectionMM"></div>
+
+
+
+        </div>
+        <div class="box bottom-left" id="container2"></div>
+        <div class="box bottom-right" id="container1"></div>
+    </div>
+    <span id="solution"></span>
+
+
+
+
+    <script>
+        var chart1 = Highcharts.chart('container1', {
+            title: {
+                text: 'Money Market'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Money Balances'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Real Interest Rate'
+                }
+            },
+            series: [{
+                name: 'Real Money Supply',
+                data: []
+            }, {
+                name: 'Real Money Demand',
+                data: []
+            }],
+
+        });
+
+
+        var initial_aC = 200;
+        var initial_T = 100;
+
+        var initial_aI = 200;
+        var initial_M = 1000;
+        var initial_G = 100;
+        var initial_P = 2;
+
+        var initial_aD = 100;
+        var initial_mpc = 0.75;
+        var initial_sLY = 1;
+        var initial_sLr = 100;
+        var initial_sIr = 25;
+
+
+
+
+
+        var chart1 = Highcharts.chart('container1', {
+            title: {
+                text: 'Money Market'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Money Balances'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Real Interest Rate'
+                }
+            },
+            series: [{
+                name: 'Real Money Supply',
+                data: []
+            }, {
+                name: 'Real Money Demand',
+                data: []
+            }]
+        });
+
+        var chart2 = Highcharts.chart('container2', {
+            title: {
+                text: 'Keynesian Cross'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Output'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Planned Expenditure'
+                }
+            },
+            series: [{
+                name: 'Planned Expenditure',
+                data: []
+            }, {
+                name: 'Actual Expenditure',
+                data: []
+            }]
+        });
+
+        var chart3 = Highcharts.chart('container3', {
+            title: {
+                text: 'IS-LM'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Output'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Real interest rate'
+                }
+            },
+            series: [{
+                name: 'IS',
+                data: []
+            }, {
+                name: 'LM',
+                data: []
+            }]
+        });
+
+
+
+
+
+
+
+
+
+        function money_supply(M, P) {
+            var data_ms = [];
+
+            for (var i = 0; i <= 40; i += 1) {  // here i is real interest rate
+                const mp = M / P;
+                data_ms.push([mp, i]);
+            }
+
+            return data_ms;
+        }
+
+        function money_demand(sLr, sLY, aD, mpc, T, aI, sIr, M, P, aC, G) {
+            var data_md = [];
+            var equation = mpc + "*(x-" + T + ")+" + aI + "-" + sIr + "*(" + sLY + "*x+" + aD + "-(" + M + "/" + P + "))/" + sLr + "+" + aC + "+" + G + "-x";
+            var f = nerdamer.solveEquations(equation, 'x');
+            for (var i = 0; i <= 40; i += 0.1) {  // here i is real interest rate
+                var md = sLY * f - sLr * i + aD;
+                data_md.push([md, i]);
+            }
+
+            return data_md;
+        }
+
+        function planned_expenditure(mpc, T, aC, aI, G, sLY, aD, M, P, sLr, sIr) {
+            var data_pe = [];
+
+            for (var i = 0; i <= 3000; i += 1) {  // here i is output
+                data_pe.push([i, mpc * (i - T) + aC - sIr * ((sLY * i + aD - M / P) / sLr) + aI + G]);
+            }
+
+            return data_pe;
+        }
+
+        function actual_expenditure() {
+            var data_ae = [];
+            for (var i = 0; i <= 3000; i += 1) {
+                data_ae.push([i, i]);
+            }
+
+            return data_ae;
+        }
+
+        function isis(mpc, T, aC, G, sIr, aI) {
+            var data_is = [];
+            for (var i = 0; i <= 2500; i += 1) {  // here i is output
+                var isisis = (- i + mpc * (i - T) + aC + aI + G) / sIr;
+                data_is.push([i, isisis]);
+            }
+
+            return data_is;
+        }
+
+
+        function lmlm(sLY, aD, M, P, sLr) {
+            var data_lm = [];
+            for (var i = 0; i <= 2500; i += 1) {
+                var lmlmlm = (sLY * i + aD - M / P) / sLr;
+                data_lm.push([i, lmlmlm]);
+            }
+
+            return data_lm;
+        }
+
+
+        function openNewPage() {
+            window.open("details_page.html", "_blank");
+        }
+
+        function updateChart() {
+            var M = parseFloat(document.getElementById("M").value);
+            var P = parseFloat(document.getElementById("P").value);
+
+            var sLY = parseFloat(document.getElementById("sLY").value);
+            var sLr = parseFloat(document.getElementById("sLr").value);
+            var aD = parseFloat(document.getElementById("aD").value);
+            var mpc = parseFloat(document.getElementById("mpc").value);
+            var T = parseFloat(document.getElementById("T").value);
+            var aC = parseFloat(document.getElementById("aC").value);
+
+            var aI = parseFloat(document.getElementById("aI").value);
+            var G = parseFloat(document.getElementById("G").value);
+            var sIr = parseFloat(document.getElementById("sIr").value);
+            var data_ms = money_supply(M, P);
+            var data_md = money_demand(sLr, sLY, aD, mpc, T, aI, sIr, M, P, aC, G);
+            var data_pe = planned_expenditure(mpc, T, aC, aI, G, sLY, aD, M, P, sLr, sIr);
+            var data_ae = actual_expenditure();
+            var data_is = isis(mpc, T, aC, G, sIr, aI);
+            var data_lm = lmlm(sLY, aD, M, P, sLr);
+
+
+            data_ms = data_ms.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_md = data_md.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_pe = data_pe.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_ae = data_ae.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_is = data_is.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_lm = data_lm.map(point => [round(point[0], 2), round(point[1], 2)]);
+
+            chart1.series[0].setData(data_ms);
+            chart1.series[1].setData(data_md);
+            chart2.series[0].setData(data_pe);
+            chart2.series[1].setData(data_ae);
+            chart3.series[0].setData(data_is);
+            chart3.series[1].setData(data_lm);
+
+
+            var equation = mpc + "*(x-" + T + ")+" + aI + "-" + sIr + "*(" + sLY + "*x+" + aD + "-(" + M + "/" + P + "))/" + sLr + "+" + aC + "+" + G + "-x";
+            var f = nerdamer.solveEquations(equation, 'x');
+            var resultContainer = document.getElementById("intersectionKC");
+
+
+
+
+            var equationmm = M + "/" + P + "-" + sLY + "*" + f[0] + "+" + sLr + "*x-" + aD;
+            var f1 = this.nerdamer.solve(equationmm, 'x');
+            var resultContainer1 = document.getElementById("intersectionMM");
+            resultContainer1.innerHTML = `Real Output: ${f}, Real Interest Rate: ${Function('return' + this.nerdamer(f1).evaluate().toString())()}`;
+
+        }
+
+        document.getElementById("M").value = initial_M;
+        document.getElementById("P").value = initial_P;
+
+        document.getElementById("sLY").value = initial_sLY;
+        document.getElementById("sLr").value = initial_sLr;
+        document.getElementById("aD").value = initial_aD;
+        document.getElementById("mpc").value = initial_mpc;
+        document.getElementById("T").value = initial_T;
+        document.getElementById("aC").value = initial_aC;
+
+        document.getElementById("aI").value = initial_aI;
+        document.getElementById("G").value = initial_G;
+        document.getElementById("sIr").value = initial_sIr;
+
+        updateChart();
+
+        function round(number, decimals) {
+            return Number(number.toFixed(decimals));
+        }
+    </script>
 </body>
 </html>
