@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
 
 
             <div class="message1">
-                <b>INTERACTIVE IS-LM MODEL (closed economy in the short run)</b><br><br>
+                <b>INTERACTIVE IS-LM MODEL (closed economy in the short run)</b>         <br><br>
             </div>
 
             <div class="button">
@@ -29,7 +29,7 @@
             </div>
 
 
-            <br><br>
+            <br>
 
             <label for="M">       \(\overline{\mathbf{M}}\) (money supply)     </label>
             <input type="number" id="M" class="small-input" step="50">
@@ -37,26 +37,24 @@
             <input type="number" id="P" class="small-input">
             <label for="sLY"><b>\(\mathbf{s_{LY}}\)</b> (sensitivity of demand to Y)</label>
             <input type="number" id="sLY" class="small-input">                                                 <br><br>
-            <label for="Y">\(\overline{\mathbf{Y}}\) (output)</label>
-            <input type="number" id="Y" class="small-input"step="50">
+
             <label for="sLr">\(\mathbf{s_{Lr}}\) (sens. of demand to real interest rate)</label>
-            <input type="number" id="sLr" class="small-input"step="10">                                               <br><br>
+            <input type="number" id="sLr" class="small-input" step="10">
             <label for="aD">\(\overline{\mathbf{aD}}\) (autonomous demand)</label>
-            <input type="number" id="aD" class="small-input"step="10">
+            <input type="number" id="aD" class="small-input" step="10">                                               <br><br>
             <label for="mpc">\(\mathbf{mpc}\) (marginal propensity to consume)</label>
-            <input type="number" id="mpc" class="small-input"step="0.05">
+            <input type="number" id="mpc" class="small-input" step="0.05">
             <label for="T">\(\overline{\mathbf{T}}\) (taxes)</label>
-            <input type="number" id="T" class="small-input"step="10">                                                <br><br>
+            <input type="number" id="T" class="small-input" step="10">
             <label for="aC">\(\overline{\mathbf{aC}}\) (aut. consumption)</label>
-            <input type="number" id="aC" class="small-input"step="10">
-            <label for="I">\(\overline{\mathbf{I}}\) (investment)</label>
-            <input type="number" id="I" class="small-input"step="10">
+            <input type="number" id="aC" class="small-input" step="10">                                               <br><br>
+
             <label for="aI">\(\overline{\mathbf{aI}}\) (aut. investment)</label>
-            <input type="number" id="aI" class="small-input"step="10">                                               <br><br>
+            <input type="number" id="aI" class="small-input" step="10">
             <label for="G">\(\overline{\mathbf{G}}\) (government expenditure)</label>
-            <input type="number" id="G" class="small-input"step="10">
+            <input type="number" id="G" class="small-input" step="10">                                               <br><br>
             <label for="sIr">\(\mathbf{s_{Ir}}\) (sens. of investment to real int. rate)</label>
-            <input type="number" id="sIr" class="small-input"step="5">
+            <input type="number" id="sIr" class="small-input" step="5">
             <br><br>
 
 
@@ -65,13 +63,19 @@
             </div>
 
             <div class="message">
-                <b>Actual Expenditure </b>   \(= Y\)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Planned Expenditure </b> \(\,= \,mpc \, \cdot \, (\,Y\, -\, \overline{T}\,) \,+\, \overline{aC}\, +\,\overline{I} \,+ \,\overline{aI}\, +\, \overline{G}\) <br><br>
-                <b>Real Money Supply </b>   \(= \frac{{\overline{M}}}{{\overline{P}}}\)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Real Money Demand </b>  \(\,= \,s_{LY}\, \cdot\, \overline{Y}\, - \,s_{Lr} \,\cdot\, r\, +\, \overline{aD}\) <br><br>
-                <b>IS:&nbsp; </b> \(\,r\, =\, \frac{{-Y \,+\, \text{mpc}\, \cdot\, (\,Y\, - \,\overline{T}\,)\, +\, \overline{aC}\, + \,\overline{aI}\, + \,\overline{G}}}{{s_{Ir}}}\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Actual Expenditure </b>   \(= Y\) <br><br>
+                <b>Planned Expenditure </b> \(\,= \,mpc \, \cdot \, (\,Y\, -\, \overline{T}\,) \,+\, \overline{aC}\, -\,s_{Ir}\,*\,r \,+ \,\overline{aI}\, +\, \overline{G}\) <br><br>
+                <b>Real Money Supply </b>   \(= \frac{{\overline{M}}}{{\overline{P}}}\)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Real Money Demand </b>  \(\,= \,s_{LY}\, \cdot\, Y\, - \,s_{Lr} \,\cdot\, r\, +\, \overline{aD}\) <br><br>
+                <b>IS:&nbsp; </b> \(\,r\, =\, \frac{{-Y \,+\, \text{mpc}\, \cdot\, (\,Y\, - \,\overline{T}\,)\, +\, \overline{aC}\, + \,\overline{aI}\, + \,\overline{G}}}{{s_{Ir}}}\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <b>LM:&nbsp; </b>\(\, r \,= \,\frac{{s_{LY}\, \cdot \,Y\, +\, \overline{aD}\, -\, \frac{\overline{M}\,}{\overline{P}}}}{{s_{Lr}}} \)
             </div>
+            <br><br>
+            <div id="intersectionKC"></div>
+            <div id="intersectionMM"></div>
+
+
+
         </div>
         <div class="box bottom-left" id="container2"></div>
         <div class="box bottom-right" id="container1"></div>
@@ -82,243 +86,264 @@
 
 
     <script>
-                var chart1 = Highcharts.chart('container1', {
-                    title: {
-                        text: 'Money Market'
-                    },
-                    xAxis: {
-                        title: {
-                            text: 'Real Money Balances'
-                        }
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Real Interest Rate'
-                        }
-                    },
-                    series: [{
-                        name: 'Real Money Supply',
-                        data: []
-                    }, {
-                        name: 'Real Money Demand',
-                        data: []
-                    }],
-                 
-                });
-
-
-                var initial_aC = 200;
-                var initial_T = 100;
-                var initial_I = 100;
-                var initial_aI = 200;
-                var initial_M = 1000;
-                var initial_G = 100;
-                var initial_P = 2;
-                var initial_Y = 1000;
-                var initial_aD = 100;
-                var initial_mpc = 0.75;
-                var initial_sLY = 1;
-                var initial_sLr = 100;
-                var initial_sIr = 25;
-
-
-
-                var chart1 = Highcharts.chart('container1', {
-                    title: {
-                        text: 'Money Market'
-                    },
-                    xAxis: {
-                        title: {
-                            text: 'Real Money Balances'
-                        }
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Real Interest Rate'
-                        }
-                    },
-                    series: [{
-                        name: 'Real Money Supply',
-                        data: []
-                    }, {
-                        name: 'Real Money Demand',
-                        data: []
-                    }]
-                });
-
-                var chart2 = Highcharts.chart('container2', {
-                    title: {
-                        text: 'Keynesian Cross'
-                    },
-                    xAxis: {
-                        title: {
-                            text: 'Real Output'
-                        }
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Planned Expenditure'
-                        }
-                    },
-                    series: [{
-                        name: 'Planned Expenditure',
-                        data: []
-                    }, {
-                        name: 'Actual Expenditure',
-                        data: []
-                    }]
-                });
-
-                var chart3 = Highcharts.chart('container3', {
-                    title: {
-                        text: 'IS-LM'
-                    },
-                    xAxis: {
-                        title: {
-                            text: 'Real Output'
-                        }
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Real interest rate'
-                        }
-                    },
-                    series: [{
-                        name: 'IS',
-                        data: []
-                    }, {
-                        name: 'LM',
-                        data: []
-                    }]
-                });
-                function money_supply(M, P) {
-                    var data_ms = [];
-
-                    for (var i = 0; i <= 40; i += 1) {  // here i is real interest rate
-                        const mp = M / P;
-                        data_ms.push([mp, i]);
-                    }
-
-                    return data_ms;
+        var chart1 = Highcharts.chart('container1', {
+            title: {
+                text: 'Money Market'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Money Balances'
                 }
-
-                function money_demand(Y, sLr, sLY, aD) {
-                    var data_md = [];
-
-                    for (var i = 0; i <= 40; i += 0.1) {  // here i is real interest rate
-                        var md = sLY * Y - sLr * i + aD;
-                        data_md.push([md, i]);
-                    }
-
-                    return data_md;
+            },
+            yAxis: {
+                title: {
+                    text: 'Real Interest Rate'
                 }
+            },
+            series: [{
+                name: 'Real Money Supply',
+                data: []
+            }, {
+                name: 'Real Money Demand',
+                data: []
+            }],
 
-                function planned_expenditure(mpc, T, aC, I, aI, G) {
-                    var data_pe = [];
+        });
 
-                    for (var i = 0; i <= 3000; i += 1) {  // here i is output
-                        data_pe.push([i, mpc * (i - T) + aC + I + aI + G]);
-                    }
 
-                    return data_pe;
+        var initial_aC = 200;
+        var initial_T = 100;
+
+        var initial_aI = 200;
+        var initial_M = 1000;
+        var initial_G = 100;
+        var initial_P = 2;
+
+        var initial_aD = 100;
+        var initial_mpc = 0.75;
+        var initial_sLY = 1;
+        var initial_sLr = 100;
+        var initial_sIr = 25;
+
+
+
+
+
+        var chart1 = Highcharts.chart('container1', {
+            title: {
+                text: 'Money Market'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Money Balances'
                 }
-
-                function actual_expenditure() {
-                    var data_ae = [];
-                    for (var i = 0; i <= 3000; i += 1) {
-                        data_ae.push([i, i]);
-                    }
-
-                    return data_ae;
+            },
+            yAxis: {
+                title: {
+                    text: 'Real Interest Rate'
                 }
+            },
+            series: [{
+                name: 'Real Money Supply',
+                data: []
+            }, {
+                name: 'Real Money Demand',
+                data: []
+            }]
+        });
 
-                function isis(mpc, T, aC, G, sIr, aI) {
-                    var data_is = [];
-                    for (var i = 0; i <= 2500; i += 1) {  // here i is output
-                        var isisis = (- i + mpc * (i - T) + aC + aI + G) / sIr;
-                        data_is.push([i, isisis]);
-                    }
-
-                    return data_is;
+        var chart2 = Highcharts.chart('container2', {
+            title: {
+                text: 'Keynesian Cross'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Output'
                 }
-
-
-                function lmlm(sLY, aD, M, P, sLr) {
-                    var data_lm = [];
-                    for (var i = 0; i <= 2500; i += 1) {
-                        var lmlmlm = (sLY * i + aD - M / P) / sLr;
-                        data_lm.push([i, lmlmlm]);
-                    }
-
-                    return data_lm;
+            },
+            yAxis: {
+                title: {
+                    text: 'Planned Expenditure'
                 }
+            },
+            series: [{
+                name: 'Planned Expenditure',
+                data: []
+            }, {
+                name: 'Actual Expenditure',
+                data: []
+            }]
+        });
 
-
-                function openNewPage() {
-                    window.open("details_page.html", "_blank");
+        var chart3 = Highcharts.chart('container3', {
+            title: {
+                text: 'IS-LM'
+            },
+            xAxis: {
+                title: {
+                    text: 'Real Output'
                 }
-
-                function updateChart() {
-                    var M = parseFloat(document.getElementById("M").value);
-                    var P = parseFloat(document.getElementById("P").value);
-                    var Y = parseFloat(document.getElementById("Y").value);
-                    var sLY = parseFloat(document.getElementById("sLY").value);
-                    var sLr = parseFloat(document.getElementById("sLr").value);
-                    var aD = parseFloat(document.getElementById("aD").value);
-                    var mpc = parseFloat(document.getElementById("mpc").value);
-                    var T = parseFloat(document.getElementById("T").value);
-                    var aC = parseFloat(document.getElementById("aC").value);
-                    var I = parseFloat(document.getElementById("I").value);
-                    var aI = parseFloat(document.getElementById("aI").value);
-                    var G = parseFloat(document.getElementById("G").value);
-                    var sIr = parseFloat(document.getElementById("sIr").value);
-                    var data_ms = money_supply(M, P);
-                    var data_md = money_demand(Y, sLr, sLY, aD);
-                    var data_pe = planned_expenditure(mpc, T, aC, I, aI, G);
-                    var data_ae = actual_expenditure();
-                    var data_is = isis(mpc, T, aC, G, sIr, aI);
-                    var data_lm = lmlm(sLY, aD, M, P, sLr);
-
-                    data_ms = data_ms.map(point => [round(point[0], 2), round(point[1], 2)]);
-                    data_md = data_md.map(point => [round(point[0], 2), round(point[1], 2)]);
-                    data_pe = data_pe.map(point => [round(point[0], 2), round(point[1], 2)]);
-                    data_ae = data_ae.map(point => [round(point[0], 2), round(point[1], 2)]);
-                    data_is = data_is.map(point => [round(point[0], 2), round(point[1], 2)]);
-                    data_lm = data_lm.map(point => [round(point[0], 2), round(point[1], 2)]);
-
-                    chart1.series[0].setData(data_ms);
-                    chart1.series[1].setData(data_md);
-                    chart2.series[0].setData(data_pe);
-                    chart2.series[1].setData(data_ae);
-                    chart3.series[0].setData(data_is);
-                    chart3.series[1].setData(data_lm);
-
-                    var equation = mpc + "*(x-" + T + ")+" + aI + "+" + I + "+" + aC + "+" + G + "-x";
-                    var f = nerdamer.solveEquations(equation, 'x');
-                    document.getElementById("solution").innerHTML = `Real Output = ${f.toString()}, Expenditure = ${f.toString()}`;
-
-
+            },
+            yAxis: {
+                title: {
+                    text: 'Real interest rate'
                 }
+            },
+            series: [{
+                name: 'IS',
+                data: []
+            }, {
+                name: 'LM',
+                data: []
+            }]
+        });
 
-                document.getElementById("M").value = initial_M;
-                document.getElementById("P").value = initial_P;
-                document.getElementById("Y").value = initial_Y;
-                document.getElementById("sLY").value = initial_sLY;
-                document.getElementById("sLr").value = initial_sLr;
-                document.getElementById("aD").value = initial_aD;
-                document.getElementById("mpc").value = initial_mpc;
-                document.getElementById("T").value = initial_T;
-                document.getElementById("aC").value = initial_aC;
-                document.getElementById("I").value = initial_I;
-                document.getElementById("aI").value = initial_aI;
-                document.getElementById("G").value = initial_G;
-                document.getElementById("sIr").value = initial_sIr;
 
-                updateChart();
 
-                function round(number, decimals) {
-                    return Number(number.toFixed(decimals));
-                }
+
+
+
+
+
+
+        function money_supply(M, P) {
+            var data_ms = [];
+
+            for (var i = 0; i <= 40; i += 1) {  // here i is real interest rate
+                const mp = M / P;
+                data_ms.push([mp, i]);
+            }
+
+            return data_ms;
+        }
+
+        function money_demand(sLr, sLY, aD, mpc, T, aI, sIr, M, P, aC, G) {
+            var data_md = [];
+            var equation = mpc + "*(x-" + T + ")+" + aI + "-" + sIr + "*(" + sLY + "*x+" + aD + "-(" + M + "/" + P + "))/" + sLr + "+" + aC + "+" + G + "-x";
+            var f = nerdamer.solveEquations(equation, 'x');
+            for (var i = 0; i <= 40; i += 0.1) {  // here i is real interest rate
+                var md = sLY * f - sLr * i + aD;
+                data_md.push([md, i]);
+            }
+
+            return data_md;
+        }
+
+        function planned_expenditure(mpc, T, aC, aI, G, sLY, aD, M, P, sLr, sIr) {
+            var data_pe = [];
+
+            for (var i = 0; i <= 3000; i += 1) {  // here i is output
+                data_pe.push([i, mpc * (i - T) + aC - sIr * ((sLY * i + aD - M / P) / sLr) + aI + G]);
+            }
+
+            return data_pe;
+        }
+
+        function actual_expenditure() {
+            var data_ae = [];
+            for (var i = 0; i <= 3000; i += 1) {
+                data_ae.push([i, i]);
+            }
+
+            return data_ae;
+        }
+
+        function isis(mpc, T, aC, G, sIr, aI) {
+            var data_is = [];
+            for (var i = 0; i <= 2500; i += 1) {  // here i is output
+                var isisis = (- i + mpc * (i - T) + aC + aI + G) / sIr;
+                data_is.push([i, isisis]);
+            }
+
+            return data_is;
+        }
+
+
+        function lmlm(sLY, aD, M, P, sLr) {
+            var data_lm = [];
+            for (var i = 0; i <= 2500; i += 1) {
+                var lmlmlm = (sLY * i + aD - M / P) / sLr;
+                data_lm.push([i, lmlmlm]);
+            }
+
+            return data_lm;
+        }
+
+
+        function openNewPage() {
+            window.open("details_page.html", "_blank");
+        }
+
+        function updateChart() {
+            var M = parseFloat(document.getElementById("M").value);
+            var P = parseFloat(document.getElementById("P").value);
+
+            var sLY = parseFloat(document.getElementById("sLY").value);
+            var sLr = parseFloat(document.getElementById("sLr").value);
+            var aD = parseFloat(document.getElementById("aD").value);
+            var mpc = parseFloat(document.getElementById("mpc").value);
+            var T = parseFloat(document.getElementById("T").value);
+            var aC = parseFloat(document.getElementById("aC").value);
+
+            var aI = parseFloat(document.getElementById("aI").value);
+            var G = parseFloat(document.getElementById("G").value);
+            var sIr = parseFloat(document.getElementById("sIr").value);
+            var data_ms = money_supply(M, P);
+            var data_md = money_demand(sLr, sLY, aD, mpc, T, aI, sIr, M, P, aC, G);
+            var data_pe = planned_expenditure(mpc, T, aC, aI, G, sLY, aD, M, P, sLr, sIr);
+            var data_ae = actual_expenditure();
+            var data_is = isis(mpc, T, aC, G, sIr, aI);
+            var data_lm = lmlm(sLY, aD, M, P, sLr);
+
+
+            data_ms = data_ms.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_md = data_md.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_pe = data_pe.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_ae = data_ae.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_is = data_is.map(point => [round(point[0], 2), round(point[1], 2)]);
+            data_lm = data_lm.map(point => [round(point[0], 2), round(point[1], 2)]);
+
+            chart1.series[0].setData(data_ms);
+            chart1.series[1].setData(data_md);
+            chart2.series[0].setData(data_pe);
+            chart2.series[1].setData(data_ae);
+            chart3.series[0].setData(data_is);
+            chart3.series[1].setData(data_lm);
+
+
+            var equation = mpc + "*(x-" + T + ")+" + aI + "-" + sIr + "*(" + sLY + "*x+" + aD + "-(" + M + "/" + P + "))/" + sLr + "+" + aC + "+" + G + "-x";
+            var f = nerdamer.solveEquations(equation, 'x');
+            var resultContainer = document.getElementById("intersectionKC");
+
+
+
+
+            var equationmm = M + "/" + P + "-" + sLY + "*" + f[0] + "+" + sLr + "*x-" + aD;
+            var f1 = this.nerdamer.solve(equationmm, 'x');
+            var resultContainer1 = document.getElementById("intersectionMM");
+            resultContainer1.innerHTML = `Real Output: ${f}, Real Interest Rate: ${Function('return' + this.nerdamer(f1).evaluate().toString())()}`;
+
+        }
+
+        document.getElementById("M").value = initial_M;
+        document.getElementById("P").value = initial_P;
+
+        document.getElementById("sLY").value = initial_sLY;
+        document.getElementById("sLr").value = initial_sLr;
+        document.getElementById("aD").value = initial_aD;
+        document.getElementById("mpc").value = initial_mpc;
+        document.getElementById("T").value = initial_T;
+        document.getElementById("aC").value = initial_aC;
+
+        document.getElementById("aI").value = initial_aI;
+        document.getElementById("G").value = initial_G;
+        document.getElementById("sIr").value = initial_sIr;
+
+        updateChart();
+
+        function round(number, decimals) {
+            return Number(number.toFixed(decimals));
+        }
     </script>
 </body>
 </html>
