@@ -14,7 +14,7 @@ body {
 }
 
 .box {
-    width: 680px;
+    width: 640px;
     height: 620px;
     margin-bottom: 40px;
     padding: 10px;
@@ -35,7 +35,7 @@ body {
 
 .message1 {
     text-align: center;
-    margin-left: 25px;
+    margin-left: 0px;
     margin-top: 10px;
     width: fit-content;
     font-size: 20px;
@@ -43,17 +43,17 @@ body {
 
 
 .button {
-    padding: 10px 300px; /* Set padding to control button size */
-    background-color: ghostwhite; /* Button background color */
+    padding: 10px 300px; 
+    background-color: ghostwhite; 
     border: none;
     border-radius: 5px;
 }
 
 .center-button2 {
-    display: inline-block; /* Keep the button inline, not as a block */
-    padding: 10px 50px; /* Set padding to control button size */
-    margin-left: 250px;
-    background-color: ghostwhite; /* Button background color */
+    display: inline-block; 
+    padding: 10px 50px; 
+    margin-left: 275px;
+    background-color: ghostwhite; 
     border: none;
     border-radius: 5px;
 }
@@ -70,7 +70,7 @@ body {
 
 .message {
     text-align: left;
-    margin: 0px;
+    margin-left: 0px;
     margin-top: 30px;
     width: fit-content;
 }
