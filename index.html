@@ -337,9 +337,8 @@
             var equationmm = M + "/" + P + "-" + sLY + "*" + f[0] + "+" + sLr + "*x-" + aD;
             var f1 = nerdamer.solveEquations(equationmm);
             var resultContainer1 = document.getElementById("intersectionMM");
-            resultContainer1.innerHTML = `<strong>Equilibrium Real Output:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> ${f[0].text('decimals', 3)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Equilibrium Real Interest Rate:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;</strong> ${f1[0].text('decimals', 3)}`;
+            resultContainer1.innerHTML = `<strong>Equilibrium Real Output:&nbsp;&nbsp;</strong> ${f[0].text('decimals', 3)}&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Equilibrium Real Interest Rate:&nbsp;&nbsp;</strong> ${f1[0].text('decimals', 3)}`;
 
         }
 
