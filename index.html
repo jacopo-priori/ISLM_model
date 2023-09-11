@@ -321,7 +321,7 @@
             var equationmm = M + "/" + P + "-" + sLY + "*" + f[0] + "+" + sLr + "*x-" + aD;
             var f1 = this.nerdamer.solve(equationmm, 'x');
             var resultContainer1 = document.getElementById("intersectionMM");
-            resultContainer1.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Equilibrium Real Output: </strong>${f}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong>Equilibrium Real Interest Rate:</strong> ${Function('return' + this.nerdamer(f1).evaluate().toString())()}`;
+            resultContainer1.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Equilibrium Real Output:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>${f}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong>Equilibrium Real Interest Rate:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> ${Function('return' + this.nerdamer(f1).evaluate().toString())()}`;
 
         }
 
