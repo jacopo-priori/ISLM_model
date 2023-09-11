@@ -65,9 +65,9 @@
             <div class="message">
                 <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actual Expenditure </b>   \(= Y\) <br><br>
                 <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Planned Expenditure </b> \(\,= \,mpc \, \cdot \, (\,Y\, -\, \overline{T}\,) \,+\, \overline{aC}\, -\,s_{Ir}\,*\,r \,+ \,\overline{aI}\, +\, \overline{G}\) <br><br>
-                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Real Money Supply </b>   \(= \frac{{\overline{M}}}{{\overline{P}}}\)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Real Money Supply </b>   \(= \frac{{\overline{M}}}{{\overline{P}}}\)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Real Money Demand </b>  \(\,= \,s_{LY}\, \cdot\, Y\, - \,s_{Lr} \,\cdot\, r\, +\, \overline{aD}\) <br><br>
-                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS:&nbsp; </b> \(\,r\, =\, \frac{{-Y \,+\, \text{mpc}\, \cdot\, (\,Y\, - \,\overline{T}\,)\, +\, \overline{aC}\, + \,\overline{aI}\, + \,\overline{G}}}{{s_{Ir}}}\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS:&nbsp; </b> \(\,r\, =\, \frac{{-Y \,+\, \text{mpc}\, \cdot\, (\,Y\, - \,\overline{T}\,)\, +\, \overline{aC}\, + \,\overline{aI}\, + \,\overline{G}}}{{s_{Ir}}}\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <b>LM:&nbsp; </b>\(\, r \,= \,\frac{{s_{LY}\, \cdot \,Y\, +\, \overline{aD}\, -\, \frac{\overline{M}\,}{\overline{P}}}}{{s_{Lr}}} \)
             </div>
             <br><br><br>
@@ -317,17 +317,29 @@
             chart3.series[1].setData(data_lm);
 
 
+            
+
+
+
+
+            
+        
+
+
+
             var equation = mpc + "*(x-" + T + ")+" + aI + "-" + sIr + "*(" + sLY + "*x+" + aD + "-(" + M + "/" + P + "))/" + sLr + "+" + aC + "+" + G + "-x";
-            var f = nerdamer.solveEquations(equation, 'x');
+            var f = nerdamer.solveEquations(equation);
             var resultContainer = document.getElementById("intersectionKC");
 
 
 
 
             var equationmm = M + "/" + P + "-" + sLY + "*" + f[0] + "+" + sLr + "*x-" + aD;
-            var f1 = this.nerdamer.solve(equationmm, 'x');
+            var f1 = nerdamer.solveEquations(equationmm);
             var resultContainer1 = document.getElementById("intersectionMM");
-            resultContainer1.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Equilibrium Real Output:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>${f}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong>Equilibrium Real Interest Rate:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> ${Function('return' + this.nerdamer(f1).evaluate().toString())()}`;
+            resultContainer1.innerHTML = `<strong>Equilibrium Real Output:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> ${f[0].text('decimals', 3)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Equilibrium Real Interest Rate:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;</strong> ${f1[0].text('decimals', 3)}`;
 
         }
 
