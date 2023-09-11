@@ -51,7 +51,8 @@ body {
 
 .center-button2 {
     display: inline-block; /* Keep the button inline, not as a block */
-    padding: 10px 150px; /* Set padding to control button size */
+    padding: 10px 50px; /* Set padding to control button size */
+    margin-left: 250px;
     background-color: ghostwhite; /* Button background color */
     border: none;
     border-radius: 5px;
