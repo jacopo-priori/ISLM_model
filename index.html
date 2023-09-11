@@ -25,7 +25,7 @@
             </div>
 
             <div class="button">
-                <button onclick="openNewPage()">Details</button>
+                <button onclick="openNewPage()">More&nbsp;Information</button>
             </div>
 
 
@@ -45,14 +45,14 @@
             <label for="mpc">\(\mathbf{mpc}\) (marginal propensity to consume)</label>
             <input type="number" id="mpc" class="small-input" step="0.05">
             <label for="T">\(\overline{\mathbf{T}}\) (taxes)</label>
-            <input type="number" id="T" class="small-input" step="10">
+            <input type="number" id="T" class="small-input" step="10">                                               <br><br>
             <label for="aC">\(\overline{\mathbf{aC}}\) (aut. consumption)</label>
-            <input type="number" id="aC" class="small-input" step="10">                                               <br><br>
+            <input type="number" id="aC" class="small-input" step="10">
 
             <label for="aI">\(\overline{\mathbf{aI}}\) (aut. investment)</label>
-            <input type="number" id="aI" class="small-input" step="10">
+            <input type="number" id="aI" class="small-input" step="10">                                               <br><br>
             <label for="G">\(\overline{\mathbf{G}}\) (government expenditure)</label>
-            <input type="number" id="G" class="small-input" step="10">                                               <br><br>
+            <input type="number" id="G" class="small-input" step="10">
             <label for="sIr">\(\mathbf{s_{Ir}}\) (sens. of investment to real int. rate)</label>
             <input type="number" id="sIr" class="small-input" step="5">
             <br><br>
@@ -145,10 +145,12 @@
             },
             series: [{
                 name: 'Real Money Supply',
-                data: []
+                data: [],
+                lineWidth: 5,
             }, {
                 name: 'Real Money Demand',
-                data: []
+                data: [],
+                lineWidth: 5,
             }]
         });
 
@@ -168,10 +170,12 @@
             },
             series: [{
                 name: 'Planned Expenditure',
-                data: []
+                data: [],
+                lineWidth: 5,
             }, {
                 name: 'Actual Expenditure',
-                data: []
+                data: [],
+                lineWidth: 5,
             }]
         });
 
@@ -191,10 +195,12 @@
             },
             series: [{
                 name: 'IS',
-                data: []
+                data: [],
+                lineWidth: 5,
             }, {
                 name: 'LM',
-                data: []
+                data: [],
+                lineWidth: 5,
             }]
         });
 
