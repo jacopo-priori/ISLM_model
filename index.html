@@ -63,11 +63,11 @@
             </div>
 
             <div class="message">
-                <b>Actual Expenditure </b>   \(= Y\) <br><br>
-                <b>Planned Expenditure </b> \(\,= \,mpc \, \cdot \, (\,Y\, -\, \overline{T}\,) \,+\, \overline{aC}\, -\,s_{Ir}\,*\,r \,+ \,\overline{aI}\, +\, \overline{G}\) <br><br>
-                <b>Real Money Supply </b>   \(= \frac{{\overline{M}}}{{\overline{P}}}\)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actual Expenditure </b>   \(= Y\) <br><br>
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Planned Expenditure </b> \(\,= \,mpc \, \cdot \, (\,Y\, -\, \overline{T}\,) \,+\, \overline{aC}\, -\,s_{Ir}\,*\,r \,+ \,\overline{aI}\, +\, \overline{G}\) <br><br>
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Real Money Supply </b>   \(= \frac{{\overline{M}}}{{\overline{P}}}\)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Real Money Demand </b>  \(\,= \,s_{LY}\, \cdot\, Y\, - \,s_{Lr} \,\cdot\, r\, +\, \overline{aD}\) <br><br>
-                <b>IS:&nbsp; </b> \(\,r\, =\, \frac{{-Y \,+\, \text{mpc}\, \cdot\, (\,Y\, - \,\overline{T}\,)\, +\, \overline{aC}\, + \,\overline{aI}\, + \,\overline{G}}}{{s_{Ir}}}\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS:&nbsp; </b> \(\,r\, =\, \frac{{-Y \,+\, \text{mpc}\, \cdot\, (\,Y\, - \,\overline{T}\,)\, +\, \overline{aC}\, + \,\overline{aI}\, + \,\overline{G}}}{{s_{Ir}}}\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <b>LM:&nbsp; </b>\(\, r \,= \,\frac{{s_{LY}\, \cdot \,Y\, +\, \overline{aD}\, -\, \frac{\overline{M}\,}{\overline{P}}}}{{s_{Lr}}} \)
             </div>
             <br><br><br>
@@ -321,7 +321,7 @@
             var equationmm = M + "/" + P + "-" + sLY + "*" + f[0] + "+" + sLr + "*x-" + aD;
             var f1 = this.nerdamer.solve(equationmm, 'x');
             var resultContainer1 = document.getElementById("intersectionMM");
-            resultContainer1.innerHTML = `<strong>Equilibrium Real Output: </strong>${f}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong>Equilibrium Real Interest Rate:</strong> ${Function('return' + this.nerdamer(f1).evaluate().toString())()}`;
+            resultContainer1.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Equilibrium Real Output: </strong>${f}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <strong>Equilibrium Real Interest Rate:</strong> ${Function('return' + this.nerdamer(f1).evaluate().toString())()}`;
 
         }
 
