@@ -327,19 +327,23 @@
 
 
 
+            function roundToDecimalPlaces(number, decimalPlaces) {
+                const multiplier = Math.pow(10, decimalPlaces);
+                return Math.round(number * multiplier) / multiplier;
+            }
+                
+            
             var equation = mpc + "*(x-" + T + ")+" + aI + "-" + sIr + "*(" + sLY + "*x+" + aD + "-(" + M + "/" + P + "))/" + sLr + "+" + aC + "+" + G + "-x";
             var f = nerdamer.solveEquations(equation);
             var resultContainer = document.getElementById("intersectionKC");
-
-
+            
+            
 
 
             var equationmm = M + "/" + P + "-" + sLY + "*" + f[0] + "+" + sLr + "*x-" + aD;
             var f1 = nerdamer.solveEquations(equationmm);
             var resultContainer1 = document.getElementById("intersectionMM");
-            resultContainer1.innerHTML = `<strong>Equilibrium Real Output:&nbsp;&nbsp;</strong> ${f[0].text('decimals', 3)}&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Equilibrium Real Interest Rate:&nbsp;&nbsp;</strong> ${f1[0].text('decimals', 3)}`;
-
+            resultContainer1.innerHTML = `Real Output: ${roundToDecimalPlaces(f[0].text('decimals'),3)}, Real Interest Rate: ${roundToDecimalPlaces(f1[0].text('decimals'),3)}`;
         }
 
         document.getElementById("M").value = initial_M;
